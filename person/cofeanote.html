@@ -99,12 +99,12 @@
 
 						<!--个人信息 -->
 						<div class="info-main">
-							<form class="am-form am-form-horizontal">
+							<form class="am-form am-form-horizontal" data-am-validator>
 
 								<div class="am-form-group">
 									<label  class="am-form-label">笔记标题</label>
 									<div class="am-form-content">
-										<input type="text" id="user-name2" placeholder="笔记标题">
+										<input type="text" id="user-name2" placeholder="笔记标题" maxlength="20" required>
 										<em style="float: right;">必填 *</em>
                                          <small style="color: #d2364c;">请输入20字以内的笔记标题...</small>
 									</div>
@@ -115,7 +115,7 @@
 								<div class="am-form-group">
 											<label for="user-intro" class="am-form-label">详细描述</label>
 											<div class="am-form-content">
-												<textarea class="" rows="3" id="user-intro" placeholder="请输入笔记的详细描述..."></textarea>
+												<textarea class="" rows="3" id="user-intro" placeholder="请输入笔记的详细描述..." maxlength="100" required></textarea>
 													<em style="float: right;">必填 *</em>
 													<small style="color: #d2364c;">100字以内写出你的笔记介绍,最好加上学校等信息</small>
 											</div>
@@ -128,7 +128,7 @@
 									<label for="user-birth" class="am-form-label">选择学科</label>
 									<div class="am-form-content birth">
 										<div class="birth-select">
-											<select data-am-selected>
+											<select data-am-selected required>
 												<option value="a">选择科目</option>
 												<option value="a">语文</option>
 												<option value="b">理科数学</option>
@@ -148,20 +148,12 @@
 									</div>
 								</div>
 								<div class="am-form-group" >
-									<label for="user-birth" class="am-form-label">选择学科</label>
+									<label for="user-birth" class="am-form-label">选择学校</label>
 									<div class="am-form-content birth">
 										<div class="birth-select">
-											<select data-am-selected>
+											<select data-am-selected required>
 												<option value="a">成都7中</option>
-												<option value="a">成都7中</option>
-												<option value="a">成都7中</option>
-												<option value="a">成都7中</option>
-												<option value="a">成都7中</option>
-												<option value="a">成都7中</option>
-												<option value="a">成都7中</option>
-												<option value="a">成都7中</option>
-												<option value="a">成都7中</option>
-												<option value="a">成都7中</option>
+												<option value="a">其他</option>
 											</select>
 											<em style="float: right;margin-right: -20px;">必填 *</em>
 										</div>
@@ -172,16 +164,16 @@
 									<label for="user-birth" class="am-form-label">教材版本</label>
 									<div class="am-form-content birth">
 										<div class="birth-select">
-											<select data-am-selected>
+											<select data-am-selected required>
 												<option value="a">人教版</option>
-												<option value="a">人教版</option>
-												<option value="a">人教版</option>
-												<option value="a">人教版</option>
+												<option value="a">北师大版</option>
+												<option value="a">上海版</option>
+												<option value="a">浙教版</option>
 
-												<option value="a">人教版</option>
-												<option value="a">人教版</option>
-												<option value="a">人教版</option>
-												<option value="a">人教版</option>
+												<option value="a">豫教版</option>
+												<option value="a">中图版</option>
+												<option value="a">北京版</option>
+												<option value="a">其他</option>
 											</select>
 											<em style="float: right;margin-right: -20px;">必填 *</em>
 										</div>
@@ -192,7 +184,7 @@
 									<label for="user-birth" class="am-form-label">类型版本</label>
 									<div class="am-form-content birth">
 										<div class="birth-select">
-											<select data-am-selected>
+											<select data-am-selected required>
 												<option value="a">电子版</option>
 												<option value="b">纸质版</option>
 												<option value="b">套装版</option>
@@ -210,7 +202,7 @@
 									<label for="user-birth" class="am-form-label">适合人群</label>
 									<div class="am-form-content birth">
 										<div class="birth-select">
-											<select data-am-selected>
+											<select data-am-selected required>
 												<option value="a">高一</option>
 												<option value="b">高二</option>
 												<option value="b">高三</option>
@@ -225,7 +217,7 @@
 								<div class="am-form-group">
 									<label  class="am-form-label">笔记数量</label>
 									<div class="am-form-content">
-										<input type="text" id="user-name2" col="3" placeholder="请输入你要售出的笔记数量">
+										<input type="text" id="user-name2" col="3" placeholder="请输入你要售出的笔记数量" required>
                                          <em style="float: right;">选填 *</em>
 									</div>
 								</div>
@@ -233,14 +225,14 @@
 								<div class="am-form-group">
 									<label  class="am-form-label">笔记单价</label>
 									<div class="am-form-content">
-										<input type="text" id="user-name2" col="3" placeholder="请输入你售出的笔记单价">
+										<input type="text" id="user-name2" col="3" placeholder="请输入你售出的笔记单价" required>
                                          <em style="float: right;">必填 *</em>
 									</div>
 								</div>
 								<div class="am-form-group">
 									<label  class="am-form-label">上传图片</label>
 									<div class="am-form-content">
-										<input type="text" id="user-name2" col="3" placeholder="请输入你售出的笔记单价">
+										<input type="text" id="user-name2" col="3" placeholder="请输入你售出的笔记单价" required>
 										<em style="float: right;">必填 *</em>
                                          <small style="color: #d2364c">上传你出售笔记的样式笔记</small>
 									</div>
@@ -284,18 +276,10 @@
 										</ul>
 									</div>
 							
+							<div class="info-btn">
+							 <button class="am-btn am-btn-secondary" type="submit">发布审核</button>
+							</div>
 
-
-
-								
-								
-
-
-								<div class="am-form-group">
-									<div class="info-btn">
-										<div class="am-btn am-btn-danger">发布审核</div>
-									</div>
-								</div>	
 
 							</form>
 						</div>

@@ -107,16 +107,14 @@
 
 							<div class="info-m">
 								<div><b>用户名：<i>yulibaozi</i></b></div>
-								<div>现有墨币：<span style="font-weight: 600;">40</span></div>
+								<div id="mobi" value='40' >现有墨币：<span style="font-weight: 600;">40</span></div>
 							</div>
 
 
 						</div>
 
-
 						<!--个人信息 -->
 						<div class="info-main">
-
 							<label  class="am-form-label" style="margin-top: 50px;">重要须知</label>
 							<div class="am-form-content">
 									<ul class="am-list am-list-static am-list-border am-list-striped">
@@ -127,18 +125,40 @@
 									</ul>
 							</div>
 
-							<form class="am-form am-form-horizontal">
-
-								
-
+							<form class="am-form am-form-horizontal" data-am-validator>
+							<fieldset>
 								<div class="am-form-group">
 									<label for="user-name" class="am-form-label">提现金额</label>
-									<div class="am-form-content">
-										<input type="text" id="user-name2" placeholder="提现金额">
-                                         <em style="float: right;">必填 *</em>
-                                         <small style="color: #d2364c;">消耗墨币：XX / 账户余额不足</small>
-									</div>
+							
+								<script language="javascript">
+								function S1() 
+								    { 
+								      var v1=document.getElementById("TextBox1").value; 
+								      var v2= document.getElementById("mobi").getAttribute('value');
+								      var c= (document.getElementById("TextBox1").value)*15;
+								      if(c>v2) { 
+								      	document.getElementById("TextBox1").focus();
+
+								      document.getElementById("demo").innerHTML="你的余额不足";  }
+								      else if (c<=v2||v1!=0){
+								      	
+								      document.getElementById("demo").innerHTML="消耗墨宝"+c;
+								        } 
+								    } 
+								</script>
+								<script type="text/javascript"> S1() </script>
+								<script type="text/javascript">document.write("")
+								</script>
+
+								<div class="am-form-content">
+									      <input onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" type="text" id="TextBox1"
+									          placeholder="只能输入金额，一元的整数倍"  onchange=" S1() " required/>      
+									    <em style="float: right;">必填 *</em>
+                                     <div id="demo">消耗墨宝：</div>
 								</div>
+
+								</div>
+
 
 								<div class="am-form-group" style="margin-bottom: 75px; ">
 									<label class="am-form-label">提现到</label>
@@ -163,15 +183,14 @@
                                          <small style="color: rgba(1,1,1,1);">如需更改,转到<a href=""   style="color: #d2364c;">实名认证</a></small>
 									</div>
 								</div>
+								
+						<div class="info-btn">
+					 	 <button class="am-btn am-btn-secondary" type="submit">提现</button>
+						</div>
 
-								
-								
-								
-								<div class="info-btn">
-									<div class="am-btn am-btn-danger">提交申请</div>
-								</div>
+						</fieldset>
 
-							</form>
+						</form>
 						</div>
 
 					</div>

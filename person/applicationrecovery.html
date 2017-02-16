@@ -87,6 +87,7 @@
 		<div class="center">
 			<div class="col-main">
 				<div class="main-wrap">
+				 <form action="" class="am-form"  data-am-validator>
 
 					<div class="user-info">
 						<!--标题 -->
@@ -104,7 +105,7 @@
 								<div class="am-form-group">
 									<label  class="am-form-label">标题</label>
 									<div class="am-form-content">
-										<input type="text" id="user-name2" placeholder="旧书/笔记的标题">
+										<input type="text" id="user-name2" placeholder="旧书/笔记的标题" required>
 										<em style="float: right;">必填 *</em>
                                          <small style="color: #d2364c;">请输入20字以内的笔记/旧书标题...</small>
 									</div>
@@ -115,23 +116,18 @@
 								<div class="am-form-group">
 											<label for="user-intro" class="am-form-label">详细描述</label>
 											<div class="am-form-content">
-												<textarea class="" rows="3" id="user-intro" placeholder="请输入笔记的详细描述..."></textarea>
+												<textarea class="" rows="3" id="user-intro" placeholder="请输入笔记的详细描述..." required></textarea>
 													<em style="float: right;">必填 *</em>
 													<small style="color: #d2364c;">请在100内内描述你申请回收的笔记/旧书</small>
 											</div>
 
 								</div>
 
-
-
-							
-
-
 								<div class="am-form-group" style="margin-top: 50px;">
 									<label for="user-birth" class="am-form-label">选择学科</label>
 									<div class="am-form-content birth">
 										<div class="birth-select">
-											<select data-am-selected>
+											<select data-am-selected required>
 												<option value="a">选择科目</option>
 												<option value="a">语文</option>
 												<option value="b">理科数学</option>
@@ -156,7 +152,7 @@
 									<label for="user-birth" class="am-form-label">选择学校</label>
 									<div class="am-form-content birth">
 										<div class="birth-select">
-											<select data-am-selected>
+											<select data-am-selected  required>
 												<option value="a">成都7中</option>
 												<option value="a">成都7中</option>
 												<option value="a">成都7中</option>
@@ -177,7 +173,7 @@
 									<label for="user-birth" class="am-form-label">教材版本</label>
 									<div class="am-form-content birth">
 										<div class="birth-select">
-											<select data-am-selected>
+											<select data-am-selected required>
 												<option value="a">人教版</option>
 												<option value="a">人教版</option>
 												<option value="a">人教版</option>
@@ -197,7 +193,7 @@
 									<label for="user-birth" class="am-form-label">类型版本</label>
 									<div class="am-form-content birth">
 										<div class="birth-select">
-											<select data-am-selected>
+											<select data-am-selected required>
 												<option value="a">旧书</option>
 												<option value="b">笔记</option>
 												
@@ -215,7 +211,7 @@
 									<label for="user-birth" class="am-form-label">适合人群</label>
 									<div class="am-form-content birth">
 										<div class="birth-select">
-											<select data-am-selected>
+											<select data-am-selected required>
 												<option value="a">高一</option>
 												<option value="b">高二</option>
 												<option value="b">高三</option>
@@ -232,14 +228,15 @@
 								<div class="am-form-group">
 									<label  class="am-form-label">申请价格</label>
 									<div class="am-form-content">
-										<input type="text" id="user-name2" col="3" placeholder="请输入你售出的笔记单价,单位：元">
+										<input type="text" id="user-name2" col="3" placeholder="请输入你售出的笔记单价,单位：元" required>
                                          <em style="float: right;">必填 *</em>
 									</div>
 								</div>
+
 								<div class="am-form-group">
 									<label  class="am-form-label">上传图片</label>
 									<div class="am-form-content">
-										<input type="text" id="user-name2" col="3" placeholder="">
+										<input type="text" id="user-name2" col="3" placeholder="" required>
 										<em style="float: right;">必填 *</em>
                                          <small style="color: #d2364c">请上传你申请回收的部分照片</small>
 									</div>
@@ -255,23 +252,14 @@
 											  <li>若不遵守,网站有权将其拉入黑名单</li>
 										</ul>
 									</div>
-							
 
-
-
-								
-								
-
-
-								<div class="am-form-group">
-									<div class="info-btn">
-										<div class="am-btn am-btn-danger">申请回收</div>
-									</div>
-								</div>	
-
+							<div class="info-btn">
+							 <button class="am-btn am-btn-secondary" type="submit">提交</button>
+							</div>
 							</form>
 						</div>
 
+					 </form>
 					</div>
 
 				</div>

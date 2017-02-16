@@ -99,12 +99,12 @@
 
 						<!--个人信息 -->
 						<div class="info-main">
-							<form class="am-form am-form-horizontal">
+							<form class="am-form am-form-horizontal" data-am-validator>
 
 								<div class="am-form-group">
 									<label  class="am-form-label">题目标题</label>
 									<div class="am-form-content">
-										<input type="text" id="user-name2" placeholder="nickname">
+										<input type="text" id="user-name2" placeholder="nickname" maxlength="40" required>
                                           <small>题目标题不能超过40个汉字</small>
 									</div>
 								</div>
@@ -112,14 +112,14 @@
 								<div class="am-form-group">
 									<label  class="am-form-label">详细描述</label>
 									<div class="am-form-content">
-										<input type="text" id="user-name2" col="3" placeholder="本题的详细描述">
+										<input type="text" id="user-name2" col="3" placeholder="本题的详细描述" required>
                                          
 									</div>
 								</div>
 								<div class="am-form-group">
 									<label for="user-birth" class="am-form-label">学科</label>
 									<div class="am-form-content birth">
-										<div class="birth-select">
+										<div class="birth-select" required>
 											<select data-am-selected>
 												<option value="a">选择科目</option>
 												<option value="a">语文</option>
@@ -142,8 +142,8 @@
 								<div class="am-form-group">
 									<label for="user-birth" class="am-form-label">截止时间</label>
 									<div class="am-form-content birth">
-										<div class="birth-select">
-											<select data-am-selected>
+										<div class="birth-select" required>
+											<select data-am-selected required>
 												<option value="a">一个小时后</option>
 												<option value="b">3个小时后</option>
 												<option value="b">一天后</option>
@@ -163,7 +163,7 @@
 									<label for="user-birth" class="am-form-label">难度系数</label>
 									<div class="am-form-content birth">
 										<div class="birth-select">
-											<select data-am-selected>
+											<select data-am-selected required>
 												<option value="a">1</option>
 												<option value="b">2</option>
 												<option value="b">3</option>
@@ -182,7 +182,7 @@
 									<label for="user-birth" class="am-form-label">适合人群</label>
 									<div class="am-form-content birth">
 										<div class="birth-select">
-											<select data-am-selected>
+											<select data-am-selected required>
 												<option value="a">高一</option>
 												<option value="b">高二</option>
 												<option value="b">高三</option>
@@ -199,7 +199,7 @@
 								<div class="am-form-group">
 									<label  class="am-form-label">悬赏价格</label>
 									<div class="am-form-content">
-										<input type="text" id="user-name2" col="3" placeholder="请输入你接受的悬赏价格(单位：元)">
+										<input type="text" id="user-name2" col="3" placeholder="请输入你接受的悬赏价格(单位：元)" required>
                                          
 									</div>
 								</div>
@@ -214,19 +214,11 @@
 											  <li>若不遵守,网站有权将其拉入黑名单</li>
 										</ul>
 									</div>
-							
 
+							<div class="info-btn">
+							 <button class="am-btn am-btn-secondary" type="submit">保存修改</button>
+							</div>
 
-
-								
-								
-
-
-								<div class="am-form-group">
-									<div class="info-btn">
-										<div class="am-btn am-btn-danger">保存修改</div>
-									</div>
-								</div>	
 
 							</form>
 						</div>

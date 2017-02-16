@@ -133,13 +133,13 @@
 						<div class="am-form-group">
 							<label for="user-password" class="am-form-label">支付密码</label>
 							<div class="am-form-content">
-								<input type="tel" id="user-password" placeholder="6位数字" required>
+							 <input type="password" id="doc-vld-pwd-1" placeholder="6 位数字的密码" pattern="^\d{6}$" required/>
 							</div>
 						</div>
 						<div class="am-form-group">
 							<label for="user-confirm-password" class="am-form-label">确认密码</label>
 							<div class="am-form-content">
-								<input type="tel" id="user-confirm-password" placeholder="请再次输入上面的密码" required>
+								<input type="password" id="doc-vld-pwd-2" placeholder="请与上面输入的值一致" data-equal-to="#doc-vld-pwd-1" required/>
 							</div>
 						</div>
 

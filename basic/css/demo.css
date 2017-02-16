@@ -163,7 +163,7 @@ time, mark, audio, video {
   
 	.nav.white .logo{display:none;}  
 	.nav.white .logoBig{ display:block;float:left;height:56px;width:115px; margin:0px auto; margin-left:5%} 
-	.nav.white .logoBig img{width:100%;}
+	.nav.white .logoBig img{width:100%;margin-top: -10px;margin-left: 20px;}
 	.my-cart { width: 46px;height: 46px;}
 	.search-bar {height: 51px;margin: 0px 50px 0 120px; padding-left:5%;}
 	#ai-topsearch {height: 46px;}

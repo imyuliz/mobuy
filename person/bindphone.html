@@ -130,12 +130,19 @@
 								<div class="am-btn am-btn-danger">验证码</div>
 							</a>
 						</div>
+
 						<div class="am-form-group">
 							<label for="user-new-phone" class="am-form-label">验证手机</label>
 							<div class="am-form-content">
-								<input type="tel" id="user-new-phone" placeholder="绑定新手机号" required>
+								 <input type="text" id="doc-vld-528" class="js-pattern-mobile" placeholder="输入新手机号" required/>
 							</div>
+							<script>
+							  if ($.AMUI && $.AMUI.validator) {
+							    $.AMUI.validator.patterns.mobile = /^\s*1\d{10}\s*$/;
+							  }
+							</script>
 						</div>
+
 						<div class="am-form-group code">
 							<label for="user-new-code" class="am-form-label">验证码</label>
 							<div class="am-form-content">
