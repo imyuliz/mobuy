@@ -1,0 +1,1163 @@
+{{template "temp/meta.tpl" .}}
+		<link href="/static/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css" />
+		
+		<link href="/static/basic/css/demo.css" rel="stylesheet" type="text/css" />
+		<link type="text/css" href="/static/css/optstyle.css" rel="stylesheet" />
+		<link type="text/css" href="/static/css/style.css" rel="stylesheet" />
+
+		<script type="text/javascript" src="/static/basic/js/jquery-1.7.min.js"></script>
+		<script type="text/javascript" src="/static/basic/js/quick_links.js"></script>
+
+		<script type="text/javascript" src="/static/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
+		<script type="text/javascript" src="/static/js/jquery.imagezoom.min.js"></script>
+		<script type="text/javascript" src="/static/js/jquery.flexslider.js"></script>
+		<script type="text/javascript" src="/static/js/list.js"></script>
+<title>商品页面</title>
+	</head>
+
+	<body>
+			{{template "temp/header.tpl" .}}
+
+			
+				<ol class="am-breadcrumb am-breadcrumb-slash">
+					<li><a href="#">首页</a></li>
+					<li><a href="#">分类</a></li>
+					<li class="am-active">内容</li>
+				</ol>
+				<script type="text/javascript">
+					$(function() {});
+					$(window).load(function() {
+						$('.flexslider').flexslider({
+							animation: "slide",
+							start: function(slider) {
+								$('body').removeClass('loading');
+							}
+						});
+					});
+				</script>
+				<div class="scoll">
+					<section class="slider">
+						<div class="flexslider">
+							<ul class="slides">
+								<li>
+									<img src="/static/images/01.jpg" title="pic" />
+								</li>
+								<li>
+									<img src="/static/images/02.jpg" />
+								</li>
+								<li>
+									<img src="/static/images/03.jpg" />
+								</li>
+							</ul>
+						</div>
+					</section>
+				</div>
+
+				<!--放大镜-->
+
+				<div class="item-inform">
+					<div class="clearfixLeft" id="clearcontent">
+
+						<div class="box">
+							<script type="text/javascript">
+								$(document).ready(function() {
+									$(".jqzoom").imagezoom();
+									$("#thumblist li a").click(function() {
+										$(this).parents("li").addClass("tb-selected").siblings().removeClass("tb-selected");
+										$(".jqzoom").attr('src', $(this).find("img").attr("mid"));
+										$(".jqzoom").attr('rel', $(this).find("img").attr("big"));
+									});
+								});
+							</script>
+
+							<div class="tb-booth tb-pic tb-s310">
+								<a href="/static/images/01.jpg"><img src="/static/images/01_mid.jpg" alt="细节展示放大镜特效" rel="/static/images/01.jpg" class="jqzoom" /></a>
+							</div>
+							<ul class="tb-thumb" id="thumblist">
+								<li class="tb-selected">
+									<div class="tb-pic tb-s40">
+										<a href="#"><img src="/static/images/01_small.jpg" mid="/static/images/01_mid.jpg" big="/static/images/01.jpg"></a>
+									</div>
+								</li>
+								<li>
+									<div class="tb-pic tb-s40">
+										<a href="#"><img src="/static/images/02_small.jpg" mid="/static/images/02_mid.jpg" big="/static/images/02.jpg"></a>
+									</div>
+								</li>
+								<li>
+									<div class="tb-pic tb-s40">
+										<a href="#"><img src="/static/images/03_small.jpg" mid="/static/images/03_mid.jpg" big="/static/images/03.jpg"></a>
+									</div>
+								</li>
+							</ul>
+						</div>
+
+						<div class="clear"></div>
+					</div>
+
+					<div class="clearfixRight">
+
+						<!--规格属性-->
+						<!--名称-->
+						<div class="tb-detail-hd">
+							<h1>	
+				 学霸笔记 2016四川状元
+	          </h1>
+						</div>
+						<div class="tb-detail-list">
+							<!--价格-->
+							<div class="tb-detail-price">
+								<li class="price iteminfo_price">
+									<dt>促销价</dt>
+									<dd><em>¥</em><b class="sys_item_price">56.90</b>  </dd>                                 
+								</li>
+								<li class="price iteminfo_mktprice">
+									<dt>原价</dt>
+									<dd><em>¥</em><b class="sys_item_mktprice">98.00</b></dd>									
+								</li>
+								<div class="clear"></div>
+							</div>
+
+                           <!--地址-->
+							<dl class="iteminfo_parameter freight" style="width: 100%">
+								<dt>配送至</dt>
+								<div class="iteminfo_freprice">
+									<div class="am-form-content address"; style="width: 600px;">
+										<select data-am-selected>
+										<option value="a">浙江省 温州市 瑞安区</option>
+										<option value="b">湖北省 武汉市 洪山区</option>
+										</select>	
+									</div>
+
+									<button
+									  type="button"
+									  class="am-btn am-btn-warning"
+									  id="doc-confirm-toggle"  style="position: relative;">
+									  使用新地址
+									</button>
+									<label id="boldStuff"></label>  <label id="tbu"></label>
+								
+									<div class="am-modal am-modal-confirm" tabindex="-1" id="my-confirm">
+									  <div class="am-modal-dialog">
+									    <div class="am-modal-hd">选择地址</div>
+									    <div class="am-modal-bd">
+									     <div class="am-form-content address">
+											<div>											
+												<select id="s_province" name="s_province"></select>
+																							
+												<select id="s_city" name="s_city" ></select>
+										
+												<select id="s_county" name="s_county" onchange="getTown();"></select>
+											
+											</div>
+											<div class="am-form-group">
+											<label for="user-intro" class="am-form-label" style="position: relative; right: 44%">详细地址</label>
+											<div class="am-form-content">
+												<textarea class="" rows="3" id="user-intro" placeholder="输入详细地址" style="position: relative; width: 99%" maxlength="10" onkeyup="SwapTxt()"></textarea>
+											</div>
+
+											</div>
+											<script>
+											 function SwapTxt(){
+											     var txt = document.getElementById("user-intro").value;  //获取文本框里的值 
+											         document.getElementById("tbu").innerHTML=txt;  //在#lyny显示文本框的值
+											      }
+											</script>
+
+											<script type="text/javascript">
+											$(function() {
+											  $('#doc-modal-list').find('.am-icon-close').add('#doc-confirm-toggle').
+											    on('click', function() {
+											      $('#my-confirm').modal({
+											        relatedTarget: this,
+											        onConfirm: function(options) {
+											        	var user=document.getElementById('user-intro');
+											            document.getElementById('boldStuff').innerHTML = '您选择的地址是'+ s1+" "+s2+" "+town1;
+											        },
+											        // closeOnConfirm: false,
+											        onCancel: function() {
+											         document.getElementById('boldStuff').innerHTML = '您取消选择地址';
+											        }
+											      });
+											    });
+											});
+											</script>
+									
+											<script type="text/javascript">
+			
+											//这个函数是必须的，因为在area.js里每次更改地址时会调用此函数
+											function promptinfo()
+											{
+											   var address = document.getElementById('address');
+											   var s1 = document.getElementById('s_province');
+											   var s2 = document.getElementById('s_city')
+											   var town1 = document.getElementById('town1');
+											   
+											    if(s1.value!="请选择省" && s2.value=='请选择市'){//若只选择了第一项，则地址就为某某省
+											        address.value = s1.value;
+											    }
+											    if(s1.value!="请选择省" && s2.value!='请选择市'){//若只选择了前两项省和市，则地址就只显示"省|市"
+											        address.value = s1.value+" "+s2.value;
+											    }
+											    if(s1.value=="请选择省"){//若什么都不选，则隐藏域地址为空串
+											        address.value="";
+											    }
+											}
+											   //获取区县的值（若不写这个触发函数，一直获取不到第三项区县的值，一直是默认值“请选择区县”）
+											   function getTown()
+											    {
+											        var address = document.getElementById('address');
+											        var s1 = document.getElementById('s_province').value
+											        var s2 = document.getElementById('s_city').value;
+											        var s3 = document.getElementById('s_county').value;
+											        var town1 = document.getElementById('town1').value;
+											       
+											        town1 = s3;
+											        if(town1=="请选择区县"){
+											          document.getElementById('boldStuff').innerHTML = '您选择的地址是' + s1+" "+s2;
+											        }else{
+											           document.getElementById('boldStuff').innerHTML = '您选择的地址是'+ s1+" "+s2+" "+town1;
+											        }
+
+											    }
+											 </script>												
+											<script type="text/javascript" src="/static/js/area.js"></script>
+											<script type="text/javascript">_init_area(); </script>
+											
+											</div>
+									    </div>
+									    <div class="am-modal-footer">
+									      <span class="am-modal-btn" data-am-modal-cancel/>取消</span>
+									      <span class="am-modal-btn" data-am-modal-confirm onclick="alert(document.getElementById('address').value; return false;" type="submit" value="提交" />确定</span>
+
+									      <input id="town1" name="town1" type="hidden" value="">
+								        <input id="address" name="address" type="hidden" value="">
+
+
+									    </div>
+									  </div>
+									</div>
+							</dl>
+							<div class="clear"></div>
+
+							<!--销量-->
+							<ul class="tm-ind-panel">
+								
+								<li class="tm-ind-item tm-ind-sumCount canClick">
+									<div class="tm-indcon"><span class="tm-label">销量</span><span class="tm-count">6015</span></div>
+								</li>
+								<li class="tm-ind-item tm-ind-reviewCount canClick tm-line3">
+									<div class="tm-indcon"><span class="tm-label">买家评价</span><span class="tm-count">640</span></div>
+								</li>
+								<li class="tm-ind-item tm-ind-reviewCount canClick tm-line3">
+									<div class="tm-indcon"><span class="tm-label">留言</span><span class="tm-count">640</span></div>
+								</li>
+							</ul>
+							<div class="clear"></div>
+
+							<!--各种规格-->
+							<dl class="iteminfo_parameter sys_item_specpara">
+								<dt class="theme-login"><div class="cart-title">可选规格<span class="am-icon-angle-right"></span></div></dt>
+								<dd>
+									<!--操作页面-->
+
+									<div class="theme-popover-mask"></div>
+
+									<div class="theme-popover">
+										<div class="theme-span"></div>
+										<div class="theme-poptit">
+											<a href="javascript:;" title="关闭" class="close">×</a>
+										</div>
+										<div class="theme-popbod dform">
+											<form class="theme-signin" name="loginform" action="" method="post">
+
+												<div class="theme-signin-left">
+
+													<div class="theme-options">
+														<div class="cart-title">可选类型</div>
+														<ul>
+															<li class="sku-line selected">电子笔记<i></i></li>
+															<li class="sku-line">原装笔记<i></i></li>
+															<li class="sku-line">打印寄送<i></i></li>
+														</ul>
+													</div>
+													<div class="theme-options">
+														<div class="cart-title number">数量</div>
+														<dd>
+															<input id="min" class="am-btn am-btn-default" name="" type="button" value="-" />
+															<input id="text_box" name="" type="text" value="1" style="width:30px;" />
+															<input id="add" class="am-btn am-btn-default" name="" type="button" value="+" />
+															<span id="Stock" class="tb-hidden">库存<span class="stock">1000</span>件</span>
+														</dd>
+
+													</div>
+													<div class="clear"></div>
+
+													<div class="btn-op">
+														<div class="btn am-btn am-btn-warning">确认</div>
+														<div class="btn close am-btn am-btn-warning">取消</div>
+													</div>
+												</div>
+												<div class="theme-signin-right">
+													<div class="img-info">
+														<img src="/static/images/songzi.jpg" />
+													</div>
+													<div class="text-info">
+														<span class="J_Price price-now">¥39.00</span>
+														<span id="Stock" class="tb-hidden">库存<span class="stock">1000</span>件</span>
+													</div>
+												</div>
+
+											</form>
+										</div>
+									</div>
+
+								</dd>
+							</dl>
+							<div class="clear"></div>
+							
+						</div>
+
+						<div class="pay">
+							<div class="pay-opt">
+							<a href="home.html"><span class="am-icon-home am-icon-fw">首页</span></a>
+							<a><span class="am-icon-heart am-icon-fw">收藏</span></a>
+							
+							</div>
+							<li>
+								<div class="clearfix tb-btn tb-btn-buy theme-login">
+									<a id="LikBuy" title="点此按钮到下一步确认购买信息" href="#">立即购买</a>
+								</div>
+							</li>
+						</div>
+
+					</div>
+
+					<div class="clear"></div>
+
+				</div>
+																			
+				<!-- introduce-->
+
+				<div class="introduce">
+					<div class="browse">
+					    <div class="mc"> 
+						     <ul>					    
+						     	<div class="mt">            
+						            <h2>看了又看</h2>        
+					            </div>
+						     	
+							      <li class="first">
+							      	<div class="p-img">                    
+							      		<a  href="#"> <img class="" src="/static/images/browse1.jpg"> </a>               
+							      	</div>
+							      	<div class="p-name"><a href="#">
+							      		【化学笔记】2016最新复习资料
+							      	</a>
+							      	</div>
+							      	<div class="p-price"><strong>￥35.90</strong></div>
+							      </li>
+							      <li>
+							      	<div class="p-img">                    
+							      		<a  href="#"> <img class="" src="/static/images/browse1.jpg"> </a>               
+							      	</div>
+							      	<div class="p-name"><a href="#">
+							      		【化学笔记】2016最新复习资料
+							      	</a>
+							      	</div>
+							      	<div class="p-price"><strong>￥35.90</strong></div>
+							      </li>
+							      <li>
+							      	<div class="p-img">                    
+							      		<a  href="#"> <img class="" src="/static/images/browse1.jpg"> </a>               
+							      	</div>
+							      	<div class="p-name"><a href="#">
+							      		【化学笔记】2016最新复习资料
+							      	</a>
+							      	</div>
+							      	<div class="p-price"><strong>￥35.90</strong></div>
+							      </li>							      
+							      <li>
+							      	<div class="p-img">                    
+							      		<a  href="#"> <img class="" src="/static/images/browse1.jpg"> </a>               
+							      	</div>
+							      	<div class="p-name"><a href="#">
+							      		【化学笔记】2016最新复习资料
+							      	</a>
+							      	</div>
+							      	<div class="p-price"><strong>￥35.90</strong></div>
+							      </li>							      
+							      <li>
+							      	<div class="p-img">                    
+							      		<a  href="#"> <img class="" src="/static/images/browse1.jpg"> </a>               
+							      	</div>
+							      	<div class="p-name"><a href="#">
+							      		【化学笔记】2016最新复习资料
+							      	</a>
+							      	</div>
+							      	<div class="p-price"><strong>￥35.90</strong></div>
+							      </li>							      
+					      
+						     </ul>					
+					    </div>
+					</div>
+					<div class="introduceMain">
+						<div class="am-tabs" data-am-tabs>
+							<ul class="am-avg-sm-3 am-tabs-nav am-nav am-nav-tabs">
+								<li class="am-active">
+									<a href="#">
+
+										<span class="index-needs-dt-txt">详情</span></a>
+
+								</li>
+
+								<li>
+									<a href="#">
+
+										<span class="index-needs-dt-txt">全部评价</span></a>
+
+								</li>
+
+								<li>
+									<a href="#">
+
+										<span class="index-needs-dt-txt">留言</span></a>
+								</li>
+							</ul>
+
+							<div class="am-tabs-bd">
+
+								<div class="am-tab-panel am-fade am-in am-active">
+
+									<div class="J_Brand">
+
+										<div class="attr-list-hd tm-clear">
+											<h4>主人详情：</h4></div>
+										<div class="clear"></div>
+										<ul id="J_AttrUL">
+											<li title="">类型:&nbsp;高中数学</li>
+											<li title="">学校:&nbsp;绵阳七中 排名第三</li>
+											<li title="">版本:&nbsp;人教版</li>
+											<li title="">官方评级:&nbsp;五星</li>
+											
+										</ul>
+										<div class="clear"></div>
+									</div>
+
+									<div class="J_Brand">
+
+										<div class="attr-list-hd tm-clear">
+											<h4>笔记详情：</h4></div>
+										<div class="clear"></div>
+										<ul id="J_AttrUL">
+											<li title="">类型:&nbsp;高中数学</li>
+											<li title="">学校:&nbsp;绵阳七中 排名第三</li>
+											<li title="">版本:&nbsp;人教版</li>
+											<li title="">官方评级:&nbsp;五星</li>
+											<li title="">笔记:&nbsp;28页pdf格式/原装笔记</li>
+											<li title="">作者信息:&nbsp;高考640分</li>
+											<li title="">适用人群:&nbsp;高中</li>
+											<li title="">有效时间：&nbsp;2017年1月2日-2027年1月2日</li>
+											<li title="">地区：&nbsp;四川</li>
+											<li title="">说明：&nbsp;电子档属于虚拟商品</li>
+										</ul>
+										<div class="clear"></div>
+									</div>
+
+
+
+
+
+									<div class="details">
+										<div class="attr-list-hd after-market-hd">
+											<h4>商品细节</h4>
+										</div>
+										<div class="twlistNews">
+											<img src="/static/images/tw1.jpg" />
+											<img src="/static/images/tw2.jpg" />
+											<img src="/static/images/tw3.jpg" />
+											<img src="/static/images/tw4.jpg" />
+											<img src="/static/images/tw5.jpg" />
+											<img src="/static/images/tw6.jpg" />
+											<img src="/static/images/tw7.jpg" />
+										</div>
+									</div>
+									<div class="clear"></div>
+
+								</div>
+
+								<div class="am-tab-panel am-fade">
+									
+                                    <div class="actor-new">
+                                    	<div class="rate">                
+                                    		<strong>100<span>%</span></strong><br> <span>好评度</span>            
+                                    	</div>
+                                        <dl>                    
+                                            <dt>买家印象</dt>                    
+                                            <dd class="p-bfc">
+                                            			<q class="comm-tags"><span>有用</span><em>(2177)</em></q>
+                                            			<q class="comm-tags"><span>非常实用</span><em>(1860)</em></q>
+                                            			<q class="comm-tags"><span>笔记清晰</span><em>(1823)</em></q>
+                                            			<q class="comm-tags"><span>价格便宜</span><em>(1689)</em></q>
+                                            			<q class="comm-tags"><span>发货快</span><em>(1488)</em></q>
+                                            			<q class="comm-tags"><span>服务态度好</span><em>(1392)</em></q>
+                                            			<q class="comm-tags"><span>带图</span><em>(1119)</em></q>
+                                            			<q class="comm-tags"><span>差评</span><em>(865)</em></q>
+                                            			<q class="comm-tags"><span>一般</span><em>(831)</em></q> 
+                                            </dd>                                           
+                                         </dl> 
+                                    </div>	
+                                    <div class="clear"></div>
+									<div class="tb-r-filter-bar">
+										<ul class=" tb-taglist am-avg-sm-4">
+											<li class="tb-taglist-li tb-taglist-li-current">
+												<div class="comment-info">
+													<span>全部评价</span>
+													<span class="tb-tbcr-num">(32)</span>
+												</div>
+											</li>
+
+											<li class="tb-taglist-li tb-taglist-li-1">
+												<div class="comment-info">
+													<span>好评</span>
+													<span class="tb-tbcr-num">(32)</span>
+												</div>
+											</li>
+
+											<li class="tb-taglist-li tb-taglist-li-0">
+												<div class="comment-info">
+													<span>中评</span>
+													<span class="tb-tbcr-num">(32)</span>
+												</div>
+											</li>
+
+											<li class="tb-taglist-li tb-taglist-li--1">
+												<div class="comment-info">
+													<span>差评</span>
+													<span class="tb-tbcr-num">(32)</span>
+												</div>
+											</li>
+										</ul>
+									</div>
+									<div class="clear"></div>
+
+									<ul class="am-comments-list am-comments-list-flip">
+										<li class="am-comment">
+											<!-- 评论容器 -->
+											<a href="">
+												<img class="am-comment-avatar" src="/static/images/hwbn40x40.jpg" />
+												<!-- 评论者头像 -->
+											</a>
+
+											<div class="am-comment-main">
+												<!-- 评论内容容器 -->
+												<header class="am-comment-hd">
+													<!--<h3 class="am-comment-title">评论标题</h3>-->
+													<div class="am-comment-meta">
+														<!-- 评论元数据 -->
+														<a href="#link-to-user" class="am-comment-author">b***1 (匿名)</a>
+														<!-- 评论者 -->
+														评论于
+														<time datetime="">2017年1月02日 17:46</time>
+													</div>
+												</header>
+
+												<div class="am-comment-bd">
+													<div class="tb-rev-item " data-id="255776406962">
+														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
+															说起来你不信，收到了打印版是封装好了的，非常清晰实用
+														</div>
+														<div class="tb-r-act-bar">
+															笔记分类：数学&nbsp;&nbsp;类别：打印版高中
+														</div>
+													</div>
+
+												</div>
+												<!-- 评论内容 -->
+											</div>
+										</li>
+										<li class="am-comment">
+											<!-- 评论容器 -->
+											<a href="">
+												<img class="am-comment-avatar" src="/static/images/hwbn40x40.jpg" />
+												<!-- 评论者头像 -->
+											</a>
+
+											<div class="am-comment-main">
+												<!-- 评论内容容器 -->
+												<header class="am-comment-hd">
+													<!--<h3 class="am-comment-title">评论标题</h3>-->
+													<div class="am-comment-meta">
+														<!-- 评论元数据 -->
+														<a href="#link-to-user" class="am-comment-author">l***4 (匿名)</a>
+														<!-- 评论者 -->
+														评论于
+														<time datetime="">2017年1月28日 11:33</time>
+													</div>
+												</header>
+
+												<div class="am-comment-bd">
+													<div class="tb-rev-item " data-id="255095758792">
+														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
+															字迹清晰，很棒哦
+														</div>
+														<div class="tb-r-act-bar">
+															笔记分类：数学&nbsp;&nbsp;类别：电子版高中
+														</div>
+													</div>
+
+												</div>
+												<!-- 评论内容 -->
+											</div>
+										</li>
+										<li class="am-comment">
+											<!-- 评论容器 -->
+											<a href="">
+												<img class="am-comment-avatar" src="/static/images/hwbn40x40.jpg" />
+												<!-- 评论者头像 -->
+											</a>
+
+											<div class="am-comment-main">
+												<!-- 评论内容容器 -->
+												<header class="am-comment-hd">
+													<!--<h3 class="am-comment-title">评论标题</h3>-->
+													<div class="am-comment-meta">
+														<!-- 评论元数据 -->
+														<a href="#link-to-user" class="am-comment-author">b***1 (匿名)</a>
+														<!-- 评论者 -->
+														评论于
+														<time datetime="">2017年1月02日 17:46</time>
+													</div>
+												</header>
+
+												<div class="am-comment-bd">
+													<div class="tb-rev-item " data-id="255776406962">
+														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
+															还不错，挺实用的
+														</div>
+														<div class="tb-r-act-bar">
+															笔记分类：数学&nbsp;&nbsp;类别：电子版高中
+														</div>
+													</div>
+
+												</div>
+												<!-- 评论内容 -->
+											</div>
+										</li>
+										<li class="am-comment">
+											<!-- 评论容器 -->
+											<a href="">
+												<img class="am-comment-avatar" src="/static/images/hwbn40x40.jpg" />
+												<!-- 评论者头像 -->
+											</a>
+
+											<div class="am-comment-main">
+												<!-- 评论内容容器 -->
+												<header class="am-comment-hd">
+													<!--<h3 class="am-comment-title">评论标题</h3>-->
+													<div class="am-comment-meta">
+														<!-- 评论元数据 -->
+														<a href="#link-to-user" class="am-comment-author">h***n (匿名)</a>
+														<!-- 评论者 -->
+														评论于
+														<time datetime="">2015年11月25日 12:48</time>
+													</div>
+												</header>
+
+												<div class="am-comment-bd">
+													<div class="tb-rev-item " data-id="258040417670">
+														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
+															不错
+														</div>
+														<div class="tb-r-act-bar">
+															笔记分类：数学&nbsp;&nbsp;类别：电子版高中
+														</div>
+													</div>
+												</div>
+												<!-- 评论内容 -->
+											</div>
+										</li>
+
+										<li class="am-comment">
+											<!-- 评论容器 -->
+											<a href="">
+												<img class="am-comment-avatar" src="/static/images/hwbn40x40.jpg" />
+												<!-- 评论者头像 -->
+											</a>
+
+											<div class="am-comment-main">
+												<!-- 评论内容容器 -->
+												<header class="am-comment-hd">
+													<!--<h3 class="am-comment-title">评论标题</h3>-->
+													<div class="am-comment-meta">
+														<!-- 评论元数据 -->
+														<a href="#link-to-user" class="am-comment-author">b***1 (匿名)</a>
+														<!-- 评论者 -->
+														评论于
+														<time datetime="">2015年11月02日 17:46</time>
+													</div>
+												</header>
+
+												<div class="am-comment-bd">
+													<div class="tb-rev-item " data-id="255776406962">
+														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
+															好看！
+														</div>
+														<div class="tb-r-act-bar">
+															笔记分类：数学&nbsp;&nbsp;类别：电子版高中
+														</div>
+													</div>
+
+												</div>
+												<!-- 评论内容 -->
+											</div>
+										</li>
+										<li class="am-comment">
+											<!-- 评论容器 -->
+											<a href="">
+												<img class="am-comment-avatar" src="/static/images/hwbn40x40.jpg" />
+												<!-- 评论者头像 -->
+											</a>
+
+											<div class="am-comment-main">
+												<!-- 评论内容容器 -->
+												<header class="am-comment-hd">
+													<!--<h3 class="am-comment-title">评论标题</h3>-->
+													<div class="am-comment-meta">
+														<!-- 评论元数据 -->
+														<a href="#link-to-user" class="am-comment-author">l***4 (匿名)</a>
+														<!-- 评论者 -->
+														评论于
+														<time datetime="">2015年10月28日 11:33</time>
+													</div>
+												</header>
+
+												<div class="am-comment-bd">
+													<div class="tb-rev-item " data-id="255095758792">
+														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
+															美美的
+														</div>
+														<div class="tb-r-act-bar">
+															笔记分类：数学&nbsp;&nbsp;类别：电子版高中
+														</div>
+													</div>
+
+												</div>
+												<!-- 评论内容 -->
+											</div>
+										</li>
+										<li class="am-comment">
+											<!-- 评论容器 -->
+											<a href="">
+												<img class="am-comment-avatar" src="/static/images/hwbn40x40.jpg" />
+												<!-- 评论者头像 -->
+											</a>
+
+											<div class="am-comment-main">
+												<!-- 评论内容容器 -->
+												<header class="am-comment-hd">
+													<!--<h3 class="am-comment-title">评论标题</h3>-->
+													<div class="am-comment-meta">
+														<!-- 评论元数据 -->
+														<a href="#link-to-user" class="am-comment-author">b***1 (匿名)</a>
+														<!-- 评论者 -->
+														评论于
+														<time datetime="">2015年11月02日 17:46</time>
+													</div>
+												</header>
+
+												<div class="am-comment-bd">
+													<div class="tb-rev-item " data-id="255776406962">
+														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
+															真心好！
+														</div>
+														<div class="tb-r-act-bar">
+															笔记分类：数学&nbsp;&nbsp;类别：电子版高中
+														</div>
+													</div>
+
+												</div>
+												<!-- 评论内容 -->
+											</div>
+										</li>
+										<li class="am-comment">
+											<!-- 评论容器 -->
+											<a href="">
+												<img class="am-comment-avatar" src="/static/images/hwbn40x40.jpg" />
+												<!-- 评论者头像 -->
+											</a>
+
+											<div class="am-comment-main">
+												<!-- 评论内容容器 -->
+												<header class="am-comment-hd">
+													<!--<h3 class="am-comment-title">评论标题</h3>-->
+													<div class="am-comment-meta">
+														<!-- 评论元数据 -->
+														<a href="#link-to-user" class="am-comment-author">h***n (匿名)</a>
+														<!-- 评论者 -->
+														评论于
+														<time datetime="">2015年11月25日 12:48</time>
+													</div>
+												</header>
+
+												<div class="am-comment-bd">
+													<div class="tb-rev-item " data-id="258040417670">
+														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
+															喜欢字迹！
+														</div>
+														<div class="tb-r-act-bar">
+															笔记分类：数学&nbsp;&nbsp;类别：电子版高中
+														</div>
+													</div>
+												</div>
+												<!-- 评论内容 -->
+											</div>
+										</li>
+										<li class="am-comment">
+											<!-- 评论容器 -->
+											<a href="">
+												<img class="am-comment-avatar" src="/static/images/hwbn40x40.jpg" />
+												<!-- 评论者头像 -->
+											</a>
+
+											<div class="am-comment-main">
+												<!-- 评论内容容器 -->
+												<header class="am-comment-hd">
+													<!--<h3 class="am-comment-title">评论标题</h3>-->
+													<div class="am-comment-meta">
+														<!-- 评论元数据 -->
+														<a href="#link-to-user" class="am-comment-author">b***1 (匿名)</a>
+														<!-- 评论者 -->
+														评论于
+														<time datetime="">2015年11月02日 17:46</time>
+													</div>
+												</header>
+
+												<div class="am-comment-bd">
+													<div class="tb-rev-item " data-id="255776406962">
+														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
+															不错！
+														</div>
+														<div class="tb-r-act-bar">
+															笔记分类：数学&nbsp;&nbsp;类别：电子版高中
+														</div>
+													</div>
+
+												</div>
+												<!-- 评论内容 -->
+											</div>
+										</li>
+										<li class="am-comment">
+											<!-- 评论容器 -->
+											<a href="">
+												<img class="am-comment-avatar" src="/static/images/hwbn40x40.jpg" />
+												<!-- 评论者头像 -->
+											</a>
+
+											<div class="am-comment-main">
+												<!-- 评论内容容器 -->
+												<header class="am-comment-hd">
+													<!--<h3 class="am-comment-title">评论标题</h3>-->
+													<div class="am-comment-meta">
+														<!-- 评论元数据 -->
+														<a href="#link-to-user" class="am-comment-author">l***4 (匿名)</a>
+														<!-- 评论者 -->
+														评论于
+														<time datetime="">2015年10月28日 11:33</time>
+													</div>
+												</header>
+
+												<div class="am-comment-bd">
+													<div class="tb-rev-item " data-id="255095758792">
+														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
+															价格便宜
+														</div>
+														<div class="tb-r-act-bar">
+															笔记分类：数学&nbsp;&nbsp;类别：电子版高中
+														</div>
+													</div>
+
+												</div>
+												<!-- 评论内容 -->
+											</div>
+										</li>
+										<li class="am-comment">
+											<!-- 评论容器 -->
+											<a href="">
+												<img class="am-comment-avatar" src="/static/images/hwbn40x40.jpg" />
+												<!-- 评论者头像 -->
+											</a>
+
+											<div class="am-comment-main">
+												<!-- 评论内容容器 -->
+												<header class="am-comment-hd">
+													<!--<h3 class="am-comment-title">评论标题</h3>-->
+													<div class="am-comment-meta">
+														<!-- 评论元数据 -->
+														<a href="#link-to-user" class="am-comment-author">b***1 (匿名)</a>
+														<!-- 评论者 -->
+														评论于
+														<time datetime="">2015年11月02日 17:46</time>
+													</div>
+												</header>
+
+												<div class="am-comment-bd">
+													<div class="tb-rev-item " data-id="255776406962">
+														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
+															我觉得评论都是小事，重要的是实用
+														</div>
+														<div class="tb-r-act-bar">
+															笔记分类：数学&nbsp;&nbsp;类别：电子版高中
+														</div>
+													</div>
+
+												</div>
+												<!-- 评论内容 -->
+											</div>
+										</li>
+										<li class="am-comment">
+											<!-- 评论容器 -->
+											<a href="">
+												<img class="am-comment-avatar" src="/static/images/hwbn40x40.jpg" />
+												<!-- 评论者头像 -->
+											</a>
+
+											<div class="am-comment-main">
+												<!-- 评论内容容器 -->
+												<header class="am-comment-hd">
+													<!--<h3 class="am-comment-title">评论标题</h3>-->
+													<div class="am-comment-meta">
+														<!-- 评论元数据 -->
+														<a href="#link-to-user" class="am-comment-author">h***n (匿名)</a>
+														<!-- 评论者 -->
+														评论于
+														<time datetime="">2015年11月25日 12:48</time>
+													</div>
+												</header>
+
+												<div class="am-comment-bd">
+													<div class="tb-rev-item " data-id="258040417670">
+														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
+															式样不错，初冬穿
+														</div>
+														<div class="tb-r-act-bar">
+															笔记分类：数学&nbsp;&nbsp;类别：电子版高中
+														</div>
+													</div>
+												</div>
+												<!-- 评论内容 -->
+											</div>
+										</li>
+
+									</ul>
+
+									<div class="clear"></div>
+
+									<!--分页 -->
+									<ul class="am-pagination am-pagination-right">
+										<li class="am-disabled"><a href="#">&laquo;</a></li>
+										<li class="am-active"><a href="#">1</a></li>
+										<li><a href="#">2</a></li>
+										<li><a href="#">3</a></li>
+										<li><a href="#">4</a></li>
+										<li><a href="#">5</a></li>
+										<li><a href="#">&raquo;</a></li>
+									</ul>
+									<div class="clear"></div>
+
+									<div class="tb-reviewsft">
+										<div class="tb-rate-alert type-attention">购买前请查看该商品的 <a href="#" target="_blank">购物保障</a>，明确您的售后保障权益。</div>
+									</div>
+
+								</div>
+
+								<div class="am-tab-panel am-fade">
+									<div class="like">
+										<ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes">
+											<li>
+												<div class="i-pic limit">
+													<img src="/static/images/imgsearch1.jpg" />
+													<p>【高中笔记】学霸专属
+														<span>学霸笔记数学</span></p>
+													<p class="price fl">
+														<b>¥</b>
+														<strong>298.00</strong>
+													</p>
+												</div>
+											</li>
+											<li>
+												<div class="i-pic limit">
+													<img src="/static/images/imgsearch1.jpg" />
+													<p>【高中笔记】学霸专属
+														<span>学霸笔记数学</span></p>
+													<p class="price fl">
+														<b>¥</b>
+														<strong>298.00</strong>
+													</p>
+												</div>
+											</li>
+											<li>
+												<div class="i-pic limit">
+													<img src="/static/images/imgsearch1.jpg" />
+													<p>【高中笔记】学霸专属
+														<span>学霸笔记数学</span></p>
+													<p class="price fl">
+														<b>¥</b>
+														<strong>298.00</strong>
+													</p>
+												</div>
+											</li>
+											<li>
+												<div class="i-pic limit">
+													<img src="/static/images/imgsearch1.jpg" />
+													<p>【高中笔记】学霸专属
+														<span>学霸笔记数学</span></p>
+													<p class="price fl">
+														<b>¥</b>
+														<strong>298.00</strong>
+													</p>
+												</div>
+											</li>
+											<li>
+												<div class="i-pic limit">
+													<img src="/static/images/imgsearch1.jpg" />
+													<p>【高中笔记】学霸专属
+														<span>学霸笔记数学</span></p>
+													<p class="price fl">
+														<b>¥</b>
+														<strong>298.00</strong>
+													</p>
+												</div>
+											</li>
+											<li>
+												<div class="i-pic limit">
+													<img src="/static/images/imgsearch1.jpg" />
+													<p>【高中笔记】学霸专属
+														<span>学霸笔记数学</span></p>
+													<p class="price fl">
+														<b>¥</b>
+														<strong>298.00</strong>
+													</p>
+												</div>
+											</li>
+											<li>
+												<div class="i-pic limit">
+													<img src="/static/images/imgsearch1.jpg" />
+													<p>【高中笔记】学霸专属
+														<span>学霸笔记数学</span></p>
+													<p class="price fl">
+														<b>¥</b>
+														<strong>298.00</strong>
+													</p>
+												</div>
+											</li>
+											<li>
+												<div class="i-pic limit">
+													<img src="/static/images/imgsearch1.jpg" />
+												    <p>【高中笔记】学霸专属
+														<span>学霸笔记数学</span></p>
+													<p class="price fl">
+														<b>¥</b>
+														<strong>298.00</strong>
+													</p>
+												</div>
+											</li>
+											<li>
+												<div class="i-pic limit">
+													<img src="/static/images/imgsearch1.jpg" />
+													<p>【高中笔记】学霸专属
+														<span>学霸笔记数学</span></p>
+													<p class="price fl">
+														<b>¥</b>
+														<strong>298.00</strong>
+													</p>
+												</div>
+											</li>
+											<li>
+												<div class="i-pic limit">
+													<img src="/static/images/imgsearch1.jpg" />
+													<p>【高中笔记】学霸专属
+														<span>学霸笔记数学</span></p>
+													<p class="price fl">
+														<b>¥</b>
+														<strong>298.00</strong>
+													</p>
+												</div>
+											</li>
+											<li>
+												<div class="i-pic limit">
+													<img src="/static/images/imgsearch1.jpg" />
+													<p>【高中笔记】学霸专属
+														<span>学霸笔记数学</span></p>
+													<p class="price fl">
+														<b>¥</b>
+														<strong>298.00</strong>
+													</p>
+												</div>
+											</li>
+											<li>
+												<div class="i-pic limit">
+													<img src="/static/images/imgsearch1.jpg" />
+													<p>【高中笔记】学霸专属
+														<span>学霸笔记数学</span></p>
+													<p class="price fl">
+														<b>¥</b>
+														<strong>298.00</strong>
+													</p>
+												</div>
+											</li>
+										</ul>
+									</div>
+									<div class="clear"></div>
+
+									<!--分页 -->
+									<ul class="am-pagination am-pagination-right">
+										<li class="am-disabled"><a href="#">&laquo;</a></li>
+										<li class="am-active"><a href="#">1</a></li>
+										<li><a href="#">2</a></li>
+										<li><a href="#">3</a></li>
+										<li><a href="#">4</a></li>
+										<li><a href="#">5</a></li>
+										<li><a href="#">&raquo;</a></li>
+									</ul>
+									<div class="clear"></div>
+
+								</div>
+
+							</div>
+
+						</div>
+
+						<div class="clear"></div>
+
+						<div class="footer">
+							<div class="footer-hd">
+								<p>
+									<a href="#">恒望科技</a>
+									<b>|</b>
+									<a href="#">商城首页</a>
+									<b>|</b>
+									<a href="#">支付宝</a>
+									<b>|</b>
+									<a href="#">物流</a>
+								</p>
+							</div>
+							<div class="footer-bd">
+								<p>
+									<a href="#">关于恒望</a>
+									<a href="#">合作伙伴</a>
+									<a href="#">联系我们</a>
+									<a href="#">网站地图</a>
+									<em>© 2015-2025 Hengwang.com 版权所有</em>
+								</p>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			
+
+	</body>
+
+</html>

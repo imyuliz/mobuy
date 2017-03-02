@@ -1,0 +1,61 @@
+{{template "temp/meta.tpl" .}}
+		<link href="/static/css/dlstyle.css" rel="stylesheet" type="text/css">
+		<script src="/static/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
+		<script src="/static/AmazeUI-2.4.2/assets/js/amazeui.min.js"></script>
+		<title>Mobuy注册</title>
+	</head>
+
+	<body>
+		{{template "temp/loginhead.tpl" . }}
+		<div class="res-banner" >
+			<div class="res-main">
+				<div class="login-banner-bg"><span></span><img src="/static/images/big.jpg" /></div>
+				<div class="login-box">
+
+						<div class="am-tabs" id="doc-my-tabs">
+							<ul class="am-tabs-nav am-nav am-nav-tabs am-nav-justify">
+								<li class=""><a href="">注册</a></li>
+								
+							</ul>
+
+							<div class="am-tabs-bd">
+								<div class="am-tab-panel am-active">
+							<form method="POST"   action="/register">
+										
+							   <div class="user-email">
+										<label for="email"><i class="am-icon-envelope-o"></i></label>
+										<input type="" name="useraccount" id="email" placeholder="请输入邮箱/手机号码" >
+				                 </div>										
+				                 <div class="user-pass">
+									<label for="password"><i class="am-icon-lock"></i></label>
+									 <input type="password" name="userpwd" id="password" placeholder="设置密码" >
+				                 </div>										
+				                 <div class="user-pass">
+									 <label for="passwordRepeat"><i class="am-icon-lock"></i></label>
+									 <input type="password" name="surepwd" id="passwordRepeat" placeholder="确认密码" >
+				                 </div>	
+
+								 <div class="login-links" >
+								
+									<input id="reader-me" name="agree" type="checkbox" style="width: 13px;height: 13px" > 点击表示您同意商城《服务协议》
+										<a href="/login" class="zcnext am-fr am-btn-default" style="top: -2px;">已有账号？登录</a>
+							  	</div>
+								  	{{template "temp/flash_error.tpl" .}}
+									
+								<div class="info-btn">
+								 <button class="am-btn am-btn-secondary" type="submit" style="width: 100%">注册</button>
+							</div>
+
+								 </form>
+
+								</div>
+							</div>
+						</div>
+
+				</div>
+			</div>
+			
+						{{template "temp/footer.tpl" .}}
+	</body>
+
+</html>

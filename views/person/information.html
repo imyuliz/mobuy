@@ -1,0 +1,117 @@
+{{template "temp/meta.tpl" .}}
+		<link href="/static/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
+		<link href="/static/css/personal.css" rel="stylesheet" type="text/css">
+		<link href="/static/css/infstyle.css" rel="stylesheet" type="text/css">
+		<script src="/static/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
+		<script src="/static/AmazeUI-2.4.2/assets/js/amazeui.js"></script>			
+		<title>个人信息详情</title>
+	</head>
+
+	<body>
+		<!--头 -->
+		{{template "temp/header.tpl" .}}
+        <!--分类-->
+		{{template "temp/catetory.tpl" .}}
+			<b class="line"></b>
+		<div class="center">
+			<div class="col-main">
+				<div class="main-wrap">
+
+					<div class="user-info">
+						<!--标题 -->
+						<div class="am-cf am-padding">
+							<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">个人资料</strong> / <small>Personal&nbsp;information</small></div>
+						</div>
+						<hr/>
+
+						<!--头像 -->
+						<div class="user-infoPic">
+
+							<div class="filePic">
+								<!-- <input type="file" class="inputPic" allowexts="gif,jpeg,jpg,png,bmp" accept="image/*"> -->
+								<img class="am-circle am-img-thumbnail" src="{{.User.UserImage}}" alt="" />
+							</div>
+
+							<p class="am-form-help">头像</p>
+
+							<div class="info-m">
+								<div><b>用户名：<i>{{.User.NickName}}</i></b></div>
+								
+							</div>
+						</div>
+
+						<div class="am-container" style="margin-left: 11%;">
+							  	<div class="am-g" style="margin-top: 20px;">
+								  <div class="am-u-sm-1" style="font-weight: 600">用户名称</div>
+								  <div class="am-u-sm-10 am-u-sm-offset-1">{{.User.NickName}}</div>
+								</div>
+
+								<div class="am-g" style="margin-top: 20px;" >
+								  <div class="am-u-sm-1" style="font-weight: 600">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别</div>
+								  <div class="am-u-sm-10 am-u-sm-offset-1">{{.User.UserSex}}</div>
+								</div>
+
+								<div class="am-g" style="margin-top: 20px;">
+								  <div class="am-u-sm-1" style=" font-weight: 600">生&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日</div>
+								  <div class="am-u-sm-10 am-u-sm-offset-1">{{.User.UserBirth}}</div>
+								</div>
+
+								<div class="am-g" style="margin-top: 20px;">
+								  <div class="am-u-sm-1" style=" font-weight: 600">电话号码</div>
+								  <div class="am-u-sm-10 am-u-sm-offset-1">{{.User.UserTel}}</div>
+								</div>
+
+								<div class="am-g" style="margin-top: 20px;">
+								  <div class="am-u-sm-1" style=" font-weight: 600">用户邮箱</div>
+								  <div class="am-u-sm-10 am-u-sm-offset-1">{{.User.UserEmail}}</div>
+								</div>
+
+								<div class="am-g" style="margin-top: 20px;">
+								  <div class="am-u-sm-1" style=" font-weight: 600">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址</div>
+									{{range .Adress}}
+									<div class="am-u-sm-10 am-u-sm-offset-1">{{.ProName}}{{.CityName}}{{.CountyName}}{{.LocationDes}}</div>
+									{{end}}
+								</div>
+								
+								<div class="am-g" style="margin-top: 20px;">
+								  <div class="am-u-sm-1" style=" font-weight: 600">所在学校</div>
+								  <div class="am-u-sm-10 am-u-sm-offset-1">{{.User.UserSchool}}</div>
+								</div>
+
+								<div class="am-g" style="margin-top: 20px;">
+								  <div class="am-u-sm-1" style=" font-weight: 600">注册时间</div>
+								  <div class="am-u-sm-10 am-u-sm-offset-1">{{.User.RegisterTime}}</div>
+								</div>
+								<div class="am-g" style="margin-top: 20px;">
+								  <div class="am-u-sm-1" style=" font-weight: 600">个人简介</div>
+								  <div class="am-u-sm-10 am-u-sm-offset-1">{{.User.SelfTro}}</div>
+								</div>
+								
+
+
+						</div>
+						<hr/>
+
+						<div class="am-g" style="margin-top: 60px;">
+							  <div class="am-u-sm-3 am-u-sm-centered" style="text-align: center;">
+							  		
+									
+									<a class=" am-radius" href="/userinformation/modify">修改信息</a>
+							  </div>
+						</div>
+
+
+						
+					</div>
+
+				</div>
+				<!--底部-->
+				{{template "temp/footer.tpl" .}}
+			</div>
+			<!--侧边栏-->
+				{{template "temp/slider.tpl" .}}
+		</div>
+
+	</body>
+
+</html>
